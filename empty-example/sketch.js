@@ -1,6 +1,6 @@
 let brain;
 let points = [];
-let totalPoints = 2
+let totalPoints = 10
 let indexer = 0;
 let epochCount = 0;
 let guessButton = document.querySelector('#guess');
