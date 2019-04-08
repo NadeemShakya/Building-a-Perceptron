@@ -1,6 +1,6 @@
 class Perceptron {
     constructor() {
-        this.weights = [0.5, 0.3];
+        this.weights = [-0.05, 0.03];
         this.guessedValue = 0;
         this.output;
         this.learningRate = 0.1;
