@@ -3,8 +3,10 @@ class Perceptron {
         this.weights = [-0.05, 0.03];
         this.guessedValue = 0;
         this.output;
-        this.learningRate = 0.1;
+        this.learningRate = 0.2;
         this.correct = 0;
+        this.accuracyIndex = 0;
+        this.accuracy;
     }
 
     guess(inputs) {
@@ -25,17 +27,22 @@ class Perceptron {
 
     train(inputs, label) {
         let error = label - this.output;
-      
+        if(error === 0) {
+            this.accuracyIndex++;
+        }
         for(let w in this.weights) {
             this.weights[w] = this.weights[w] + error * inputs[w] * this.learningRate;
         }
-    }
- 
-    checkGuessValue(label) {
-      //  console.log("Expected Output: " + label + " , Guessed Output: " + this.output);
+
     }
 
-    accuracy(correct, totalPoints) {
-        console.log((correct / totalPoints) * 100);
+    checkAccuracy(totalPoints) {
+        this.accuracy = ((this.accuracyIndex / totalPoints) * 100);
+        this.accuracyIndex = 0;
+        if(this.accuracy === 100) {
+            return true;
+        }else {
+            return false;
+        }
     }
 }

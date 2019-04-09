@@ -4,19 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>p5.js example</title>
-    <style> body {padding: 0; margin: 0;} </style>
+    <style> body {padding: 0; margin: 0; overflow: hidden} </style>
     <script src="../p5.min.js"></script>
     <script src="../addons/p5.dom.min.js"></script>
     <script src="../addons/p5.sound.min.js"></script>
     <script src="points.js"></script>
     <script src="perceptron.js"></script>
+
   </head>
   <body>
     <div>
-      <button id = "guess">Guess</button>
+      <div id = 'addPointsDiv'>
+        <span>Train the perceptron in <input type="text" id = "trainingPoints"> number of points.</span>
+        <button id = "addPoints">Add Points</button>
+      </div>
       <button id = "train">Train</button>
-      <p>View your console for further informations.</p>
+      <label for="weight1">
+        Weight1
+        <input type="text" id = "weight1">
+      </label>
+      <label for="weight2">
+          Weight2
+          <input type="text" id = "weight2">
+        </label>
     </div>
+
+    <input type="text" placeholder="X" id = "X">
+    <input type="text" placeholder="Y" id = "Y">
+    <button id = "guess">Guess</button>
 
     <script src="sketch.js"></script>
   </body>

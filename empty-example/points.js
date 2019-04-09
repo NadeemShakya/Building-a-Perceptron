@@ -21,7 +21,7 @@ class Points {
 
     showPoints() {
         stroke(255);
-        line(0, 0, width, width);
+        line(0, 0, height, height);
         if(this.label === 1) {
             fill(255)
         }else if(this.label === -1) {
