@@ -3,25 +3,77 @@ let points = [];
 let indexer = 0;
 let epochCount = 0;
 let startDrawLoop = false;
+let trained = true;
 
 let guessButton = document.querySelector('#guess');
 guessButton.addEventListener("click", guess);
-let trainButton = document.querySelector('#train');
-trainButton.addEventListener("click", train);
-
+// let trainButton = document.querySelector('#train');
+// trainButton.addEventListener("click", train);
 let addPointsButton = document.querySelector('#addPoints');
 addPointsButton.addEventListener("click", addPoints);
 
 function setup() {
-  frameRate(3);
-  createCanvas(windowWidth, windowHeight);
-  background(0);
-  brain = new Perceptron();
-
-
-;
+  frameRate(5);
+    if(trained) {
+    createCanvas(windowWidth, windowHeight);
+    background(50);
+    brain = new Perceptron();
+  }
+  // showLabel();
+ 
 }
 
+function showLabel() {
+    let start = 100;
+    let gap = 60
+    stroke(255);
+    fill(0);
+    ellipse(start + gap * 0, 20, 16);
+    fill(255);
+    ellipse(start + gap * 0, 20, 8);
+
+
+    stroke(255);
+    fill(255);
+    ellipse(start + gap * 1, 20, 16);
+    ellipse(start + gap * 1, 20, 8);
+
+    stroke(255);
+    fill(0);
+    ellipse(start + gap * 2, 20, 16);
+    fill(0, 255, 0);
+    ellipse(start + gap * 2, 20, 8);
+
+    stroke(255);
+    fill(0);
+    ellipse(start + gap * 3, 20, 16);
+    fill(255, 0, 0);
+    ellipse(start + gap * 3, 20, 8);
+
+    stroke(255);
+    fill(255);
+    ellipse(start + gap * 4, 20, 16);
+    fill(0, 255, 0);
+    ellipse(start + gap * 4, 20, 8);
+
+    stroke(255);
+    fill(255);
+    ellipse(start + gap * 5, 20, 16);
+    fill(255, 0, 0);
+    ellipse(start + gap * 5, 20, 8);
+
+    stroke(255);
+    fill(255, 255, 0);
+    ellipse(start + gap * 6, 20, 30);
+    fill(255, 0, 0);
+    ellipse(start + gap * 6, 20, 10);
+
+    stroke(255);
+    fill(255, 255, 0);
+    ellipse(start + gap * 7, 20, 30);
+    fill(0, 255, 0);
+    ellipse(start + gap * 7, 20, 10);
+}
 function draw() {
   if(startDrawLoop) {
     for(let p in points){
@@ -61,29 +113,30 @@ function addPoints() {
 }
 
 function guess() {
-    fill(200, 100, 100);
-    ellipse(document.getElementById('X').value, document.getElementById('Y').value, 30);
+    fill(255, 255, 0);
+    stroke(255);
+    let xValue = document.getElementById('X').value;
+    let yValue = document.getElementById('Y').value;
+    let label;
+    if(xValue >= yValue) {
+      label = 1;
+    }else if(xValue < yValue) {
+      label = -1;
+    }
+    ellipse(xValue, yValue, 40);
     brain.guess([document.getElementById('X').value, document.getElementById('Y').value]);
     let a = brain.activationFuction();
-    console.log(a);
-    if(a == 1) {
+
+    if(a == label) {
       fill(0, 255, 0);
     }else {
       fill(255, 0, 0);
     }
     noStroke();
-    ellipse(document.getElementById('X').value, document.getElementById('Y').value, 8);
+    ellipse(document.getElementById('X').value, document.getElementById('Y').value, 20);
 
 
 }
 
-function train() {
-  epochCount++;
-  for(let p in points) {
-  }
- 
-
-  console.log(`Trained for ${epochCount} epoch.`);
-}
 
 

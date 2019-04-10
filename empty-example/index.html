@@ -6,32 +6,38 @@
     <title>p5.js example</title>
     <style> body {padding: 0; margin: 0; overflow: hidden} </style>
     <script src="../p5.min.js"></script>
-    <script src="../addons/p5.dom.min.js"></script>
-    <script src="../addons/p5.sound.min.js"></script>
     <script src="points.js"></script>
     <script src="perceptron.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   </head>
   <body>
-    <div>
-      <div id = 'addPointsDiv'>
-        <span>Train the perceptron in <input type="text" id = "trainingPoints"> number of points.</span>
-        <button id = "addPoints">Add Points</button>
+    <div class = "mainWrapper row">
+      <div id = 'addPointsDiv' class="col-md-6 ">
+        <span>Train perceptron with <input type="number" id = "trainingPoints" class = "trainingPoints"> points.</span>
+        <button id = "addPoints">Train</button>
       </div>
-      <button id = "train">Train</button>
+
+      <div id = 'testPerceptron' class="col-md-6">
+        <span>Test your perceptron at </span>
+        <input type="number" placeholder="X" id = "X">
+        <input type="number" placeholder="Y" id = "Y">
+        <button id = "guess">Guess</button>
+      </div>
+
+      <div style = "display: none">
       <label for="weight1">
-        Weight1
-        <input type="text" id = "weight1">
-      </label>
-      <label for="weight2">
-          Weight2
-          <input type="text" id = "weight2">
+          Weight1
+          <input type="number" id = "weight1" value = "-0.05" readonly>
         </label>
+        <label for="weight2">
+            Weight2
+            <input type="number" id = "weight2" value = "0.03">
+        </label>
+      </div>
     </div>
 
-    <input type="text" placeholder="X" id = "X">
-    <input type="text" placeholder="Y" id = "Y">
-    <button id = "guess">Guess</button>
 
     <script src="sketch.js"></script>
   </body>

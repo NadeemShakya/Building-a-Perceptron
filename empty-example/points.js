@@ -7,8 +7,8 @@ class Points {
 
     createPoints() {
         
-        this.x = floor(random(0, width));
-        this.y = floor(random(0, height));
+        this.x = floor(random(20, width - 50));
+        this.y = floor(random(20, height - 100));
         let classification;
         if(this.x >= this.y) {
             classification = +1;
